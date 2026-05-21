@@ -10,7 +10,7 @@ def sniff(interface):
 
 def get_info(packet):
     if packet.haslayer(scapy.Raw):
-        statement = packet[scapy.Raw].load
+        statement = packet[scapy.Raw].load.decode(errors="ignore")
         credentials = ["username", "user", "login", "uname", "password", "pass"]
         for word in credentials:
             if word in statement:
